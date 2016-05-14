@@ -1,49 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>ME</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="" rel="stylesheet" type="text/css">
-</head>
+---
+layout: page
+description: "陈素封"
+---
 
-<body>
-<header>
-    <nav class="navbar container">
-        <div class="row clearfix">
-            <div class="navbar-header">
-                <h1>WELCOME</h1>
-            </div>
-            <div class="navbar-menu">
-                <ul>
-                    <li><a href="#">主页</a></li>
-                    <li><a href="#">相册</a></li>
-                    <li><a href="#">个人信息</a></li>
-                    <li><a href="#">留言板</a></li>
-                </ul>
-            </div>
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">            
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:150 }}
         </div>
-    </nav>
-</header>
-<div class="container clearfix">
-
-    <div class="siderbar">
-    <form>
-            <div class="form-group">
-                <label class="control-label">留言</label>
-                <div class="form-control" style="width: 60%">
-                    <textarea name="desc" rows="5" placeholder="欢迎留言"></textarea>
-                </div>
-            </div>
-
-            <button class="btn btn-primary btn-lg">确认提交</button>
-        </form>
-    </div>
+    </a>
+    <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
 </div>
 
+<hr>
+{% endfor %}
 
-<footer><p>BIG&copy;</p></footer>
-
-</body>
-</html>
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}

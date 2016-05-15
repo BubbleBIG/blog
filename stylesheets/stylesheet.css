@@ -185,8 +185,12 @@ sub {
 
 img {
   border: 0;
+  padding-left: 20px;
 }
 
+.owner img {
+  padding-left: 0px;
+}
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
@@ -554,8 +558,8 @@ p.tagline {
   display: block;
 }
 
-.download-bar a.code {
-  background: transparent url(../images/code.png) no-repeat 0 2px;
+.download-bar a.code .blog {
+  /*background: transparent url(../images/home.png) no-repeat 0 2px;*/
   padding-left: 35px;
   margin-top: 8px;
   display: block;
@@ -638,8 +642,8 @@ a.tar span {
   -webkit-transition: opacity ease-in-out 0.3s;  /* Safari <=6.1, Android <= 4.3 */
 }
 
-a.code {
-  background: transparent url(../images/code.png) no-repeat 0 2px;
+a.code .blog {
+  /*background: transparent url(../images/code.png) no-repeat 0 2px;*/
   width: 30px;
   height: 21px;
   display: block;
@@ -653,7 +657,7 @@ a.code {
 
 a.zip:hover,
 a.tar:hover,
-a.code:hover {
+a.code .blog:hover {
   opacity: 1;
   filter:alpha(opacity=100);
 }

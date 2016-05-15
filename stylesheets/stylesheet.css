@@ -16,6 +16,10 @@ html {
  * Remove default margin.
  */
 
+title {
+
+}
+
 body {
   margin: 0;
 }
